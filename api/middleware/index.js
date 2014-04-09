@@ -3,8 +3,10 @@
  * Created By Daniel Lucas
  */
 
-module.exports = [
-    require('./allowCrossDomainRequests')
-];
+module.exports = {
+    _default: [require('./allowCrossDomainRequests')],
+    checkPrivileges: require('./checkPrivileges')
+};
+
 
 

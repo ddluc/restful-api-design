@@ -4,9 +4,12 @@
  */
 
 var _ = require('underscore'),
-    q = require('q');
+    q = require('q'),
+    requireChildren = require('require-children');
 
-var Posts = require('../models/posts/model.js');
+
+var Middleware = requireChildren('../middleware', module);
+    Post = require('../models/posts/model.js');
 
 module.exports = {
     description : 'Manage Posts',
@@ -25,10 +28,10 @@ module.exports = {
                 { name : 'content', type:'object'}
             ],
             requireAdmin: true,
-            middleware : [checkPrivileges],
+            middleware : [Middleware.checkPrivileges],
             endpoint : function(req, res){
                 var title = req.param('title');
-                var newPost = new post({
+                var newPost = new Post({
                     title       : req.param('title'),
                     date        : req.param('date'),
                     type        : req.param('type'),
@@ -53,7 +56,7 @@ module.exports = {
             requiredParams: [],
             middleware: [],
             endpoint: function(req, res) {
-                Posts.find(function(posts, err) {
+                Post.find(function(posts, err) {
                     if(err) res.send(err);
                     else {
                         res.send('200', posts);

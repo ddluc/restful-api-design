@@ -4,9 +4,11 @@
  */
 
 var _ = require('underscore'),
-    q = require('q');
+    q = require('q'),
+    requireChildren = require('require-children');
 
-var User = require('../models/users/model.js');
+var Middleware = requireChildren('../middleware', module),
+    User = require('../models/users/model.js');
 
 module.exports = {
     description : 'Manage Users',
@@ -23,12 +25,9 @@ module.exports = {
             endpoint : function(req, res) {
                 var username = req.param('username'),
                     password = req.param('password');
-                console.log(username);
-                var verified = false;
                 User.findOne({username: username}, function(err, usr) {
                     if(err) res.send('500', 'ERR: ' + err);
                     else if(!usr) res.send('500', 'ERR: user doesn\'t exist');
-                    //console.log(usr);
                     responseObject = {'userKey': usr._id};
                     res.send('200', responseObject)
                 });
@@ -42,7 +41,8 @@ module.exports = {
                 {name: 'password', type:'string'},
                 {name: 'username', type:'string'}
             ],
-            middleware: [],
+            middleware: [Middleware.checkPrivileges],
+            requireAdmin: true,
             endpoint: function(req, res) {
                 var username = req.param('username'),
                     password = req.param('password');
