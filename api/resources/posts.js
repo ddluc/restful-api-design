@@ -3,6 +3,11 @@
  * Created By Daniel Lucas
  */
 
+var _ = require('underscore'),
+    q = require('q');
+
+var Posts = require('../models/posts/model.js');
+
 module.exports = {
     description : 'Manage Posts',
     methods: {
@@ -19,9 +24,26 @@ module.exports = {
                 { name : 'type', type : 'string'},
                 { name : 'content', type:'object'}
             ],
-            middleware : [],
+            requireAdmin: true,
+            middleware : [checkPrivileges],
             endpoint : function(req, res){
-                res.send('Create Posts Endpoint');
+                var title = req.param('title');
+                var newPost = new post({
+                    title       : req.param('title'),
+                    date        : req.param('date'),
+                    type        : req.param('type'),
+                    client      : req.param('client'),
+                    ingredients : req.param('ingredients'),
+                    body        : req.param('body'),
+                    link        : req.param('link')
+                });
+
+                newPost.save(function(err){
+                    if(err) console.log('ERR: ' + err);
+                    else{
+                        res.send('Post Added!');
+                    }
+                });
             }
         },
         'load': {
@@ -31,7 +53,12 @@ module.exports = {
             requiredParams: [],
             middleware: [],
             endpoint: function(req, res) {
-                res.send('Load Posts Endpoint');
+                Posts.find(function(posts, err) {
+                    if(err) res.send(err);
+                    else {
+                        res.send('200', posts);
+                    }
+                });
             }
         }
     }
