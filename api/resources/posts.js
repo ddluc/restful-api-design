@@ -9,7 +9,7 @@ var _ = require('underscore'),
 
 
 var Middleware = requireChildren('../middleware', module);
-    Post = require('../models/posts/model.js');
+    Post = require('../models/posts/model');
 
 module.exports = {
 
@@ -20,34 +20,25 @@ module.exports = {
         'create': {
             httpMethod: 'POST',
             description: 'Creates a new post',
-            optionalParams: [
-                {name: 'link', type: 'string'},
-                {name: 'ingredients', type:'array'},
-            ],
+            optionalParams: [],
             requiredParams: [
-                { name : 'title', type : 'string'},
-                { name : 'date', type : 'string'},
-                { name : 'type', type : 'string'},
-                { name : 'content', type:'object'}
+                {name : 'title', type : 'string'},
+                {name  : 'body',  type : 'string'}
             ],
             requireAdmin: true,
             middleware : [Middleware.checkPrivileges],
             endpoint : function(req, res){
-                var title = req.param('title');
-                var newPost = new Post({
-                    title       : req.param('title'),
-                    date        : req.param('date'),
-                    type        : req.param('type'),
-                    client      : req.param('client'),
-                    ingredients : req.param('ingredients'),
-                    body        : req.param('body'),
-                    link        : req.param('link')
-                });
-
-                newPost.save(function(err){
-                    if(err) res.send(500, 'ERRR: ' + err);
-                    else res.send('Post Added!');
-                });
+              var title = req.param('title'),
+                  body  = req.param('body');
+              var newPost = new Post({
+                  title  : title,
+                  body   : body
+              });
+              console.log(newPost); 
+              newPost.save(function(err){
+                  if(err) res.send(500, 'ERRR: ' + err);
+                  else res.send(200, {status: 'OK', post: newPost});
+              });
             }
         },
 
@@ -58,12 +49,10 @@ module.exports = {
             requiredParams: [],
             middleware: [],
             endpoint: function(req, res) {
-                Post.find(function(posts, err) {
-                    if(err) res.send(err);
-                    else {
-                        res.send('200', posts);
-                    }
-                });
+              Post.find(function(posts, err) {
+                  if(err) res.send(err);
+                  else res.send('200', posts);
+              });
             }
         }
     }

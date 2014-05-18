@@ -6,4 +6,3 @@ var Mongoose = require('mongoose'),
 
 // Export model
 module.exports = Mongoose.model('Post', schema);
-

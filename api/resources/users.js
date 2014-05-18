@@ -8,7 +8,7 @@ var _ = require('underscore'),
     requireChildren = require('require-children');
 
 var Middleware = requireChildren('../middleware', module),
-    User = require('../models/users/model.js');
+    User = require('../models/users/model');
 
 module.exports = {
 
@@ -26,16 +26,13 @@ module.exports = {
             ],
             middleware: [],
             endpoint : function(req, res) {
-                var username = req.param('username'),
-                    password = req.param('password');
-                User.findOne({username: username}, function(err, usr) {
-                    if(err) res.send(500, 'ERR: ' + err);
-                    else if(!usr) res.send(403, 'ERR: user doesn\'t exist');
-                    else {
-                      responseObject = {'userKey': usr._id};
-                      res.send(200, responseObject);
-                    }
-                });
+              var username = req.param('username'),
+                  password = req.param('password');
+              User.findOne({username: username}, function(err, usr) {
+                  if(err) res.send(500, 'ERR: ' + err);
+                  else if(!usr) res.send(403, 'ERR: user doesn\'t exist');
+                  else res.send(200, {'userKey': usr._id});
+              });
             }
         },
 
@@ -50,19 +47,19 @@ module.exports = {
             middleware: [Middleware.checkPrivileges],
             requireAdmin: true,
             endpoint: function(req, res) {
-                var username = req.param('username'),
-                    password = req.param('password');
-
-                var newUser = new User({
-                    username: username,
-                    password: password
-                });
-
-                newUser.save(function(err) {
-                   if(err) res.send(500, 'ERR: ' + err);
-                   else res.send('200', 'User successfully created');
-                });
+              var username = req.param('username'),
+                  password = req.param('password');
+              var newUser = new User({
+                  username: username,
+                  password: password
+              });
+              console.log(newUser.username); 
+              newUser.save(function(err) {
+                 if(err) res.send(500, 'ERR: ' + err);
+                 else res.send(200, 'User successfully created');
+              });
             }
         }
+
     }
 };

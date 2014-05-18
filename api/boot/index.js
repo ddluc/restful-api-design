@@ -54,24 +54,20 @@ module.exports = function(Router) {
         console.log('Booting Resources: ' + resourceName.toUpperCase());
         var apiDefaultMiddleware = _.values(Middleware._default);
         _.each(resource.methods, function bootResourceMethods(resourceMethod, resourceMethodName) {
+
             var resourceMethodRoute = '/' + resourceName + '/' + resourceMethodName,
                  resourceMethodHttpMethod = resourceMethod.httpMethod.toLowerCase(),
                  resourceMethodMiddleware = apiDefaultMiddleware.concat(resourceMethod.middleware),
                  resourceMethodEndpoint = _.bind(resourceMethod.endpoint, Api);
 
-            resourceMethodMiddleware.unshift(function(req, res, next){
-                console.log('req.body:', req.body);
-                console.log('req.params:', req.params);
-                console.log('req.query:', req.query);
-                next();
-            });
-
             console.log('Booting ' + resourceMethodRoute);
+
             Router[resourceMethodHttpMethod](
                 resourceMethodRoute,
                 resourceMethodMiddleware,
                 resourceMethodEndpoint
             );
+            
         });
     });
 
