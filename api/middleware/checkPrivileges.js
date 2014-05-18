@@ -3,6 +3,11 @@ var Mongoose = require('mongoose'),
 
 module.exports = function(req, res, next) {
     var userKey = req.param('userKey');
-    console.log('USER KEY: ' + userKey);
-    next();
+    User.findOne({_id: userKey}, function(usr, err) {
+       if(err) res.send('500', err);
+       else if(!usr) res.send('403', 'You don\'t have access to this resource');
+       else {
+           next();
+       }
+    });
 };

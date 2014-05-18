@@ -7,6 +7,7 @@
  * Created By Daniel Lucas
  */
 
+
 var _ = require('underscore'),
     mongoose = require('mongoose'),
     requireChildren = require('require-children');
@@ -51,7 +52,7 @@ module.exports = function(Router) {
      */
     _.each(Resources, function bootResource(resource, resourceName) {
         console.log('Booting Resources: ' + resourceName.toUpperCase());
-        apiDefaultMiddleware = _.values(Middleware);
+        apiDefaultMiddleware = _.values(Middleware._default);
         _.each(resource.methods, function bootResourceMethods(resourceMethod, resourceMethodName) {
             var resourceMethodRoute = '/' + resourceName + '/' + resourceMethodName,
                  resourceMethodHttpMethod = resourceMethod.httpMethod.toLowerCase(),
