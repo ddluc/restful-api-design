@@ -7,6 +7,3 @@ module.exports = {
     _default: [require('./allowCrossDomainRequests')],
     checkPrivileges: require('./checkPrivileges')
 };
-
-
-

@@ -12,13 +12,16 @@ var Middleware = requireChildren('../middleware', module);
     Post = require('../models/posts/model.js');
 
 module.exports = {
+
     description : 'Manage Posts',
+
     methods: {
+
         'create': {
             httpMethod: 'POST',
             description: 'Creates a new post',
             optionalParams: [
-                {name: 'client', type: 'string'},
+                {name: 'link', type: 'string'},
                 {name: 'ingredients', type:'array'},
             ],
             requiredParams: [
@@ -42,13 +45,12 @@ module.exports = {
                 });
 
                 newPost.save(function(err){
-                    if(err) console.log('ERR: ' + err);
-                    else{
-                        res.send('Post Added!');
-                    }
+                    if(err) res.send(500, 'ERRR: ' + err);
+                    else res.send('Post Added!');
                 });
             }
         },
+
         'load': {
             httpMethod: 'GET',
             description: 'Loads posts',

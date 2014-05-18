@@ -11,8 +11,11 @@ var Middleware = requireChildren('../middleware', module),
     User = require('../models/users/model.js');
 
 module.exports = {
+
     description : 'Manage Users',
+
     methods: {
+
         'login' : {
             httpMethod: 'POST',
             description: 'Verify\'s user, and responds with user key',
@@ -26,13 +29,16 @@ module.exports = {
                 var username = req.param('username'),
                     password = req.param('password');
                 User.findOne({username: username}, function(err, usr) {
-                    if(err) res.send('500', 'ERR: ' + err);
-                    else if(!usr) res.send('500', 'ERR: user doesn\'t exist');
-                    responseObject = {'userKey': usr._id};
-                    res.send('200', responseObject)
+                    if(err) res.send(500, 'ERR: ' + err);
+                    else if(!usr) res.send(403, 'ERR: user doesn\'t exist');
+                    else {
+                      responseObject = {'userKey': usr._id};
+                      res.send(200, responseObject);
+                    }
                 });
             }
         },
+
         'create' : {
             httpMethod: 'POST',
             description: 'Creates a new user',
@@ -53,12 +59,9 @@ module.exports = {
                 });
 
                 newUser.save(function(err) {
-                   if(err) res.send('500', 'ERR: ' + err);
-                   else {
-                       res.send('200', 'User successfully created');
-                   }
+                   if(err) res.send(500, 'ERR: ' + err);
+                   else res.send('200', 'User successfully created');
                 });
-
             }
         }
     }

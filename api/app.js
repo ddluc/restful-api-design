@@ -15,7 +15,7 @@ var Router = express();
  * Configure shared router middleware
  */
 
-Router.use(express.logger('short'));
+Router.use(express.logger('dev'));
 Router.use(express.json());
 Router.use(express.urlencoded());
 
@@ -29,8 +29,3 @@ Router = boot(Router);
 Router.listen(routerHttpPort, function() {
    console.log('API is listening on port ' + routerHttpPort);
 });
-
-
-
-
-

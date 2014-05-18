@@ -24,10 +24,8 @@ module.exports = function(Router) {
      */
 
     Mongoose = mongoose.connect(databaseConnectionUri, function mongooseConnectionCallback(error) {
-        if (error) {
-            return console.error(error.stack);
-        }
-        return console.log('Mongoose connected successfully.')
+        if (error) return console.error(error.stack);
+        else return console.log('Mongoose connected successfully.')
     });
 
     Mongoose.connection.on('error', function handleMongooseConnectionError(error) {
@@ -49,10 +47,12 @@ module.exports = function(Router) {
 
     /**
      * Boot Resources
+     *
      */
+
     _.each(Resources, function bootResource(resource, resourceName) {
         console.log('Booting Resources: ' + resourceName.toUpperCase());
-        apiDefaultMiddleware = _.values(Middleware._default);
+        var apiDefaultMiddleware = _.values(Middleware._default);
         _.each(resource.methods, function bootResourceMethods(resourceMethod, resourceMethodName) {
             var resourceMethodRoute = '/' + resourceName + '/' + resourceMethodName,
                  resourceMethodHttpMethod = resourceMethod.httpMethod.toLowerCase(),
@@ -81,8 +81,3 @@ module.exports = function(Router) {
 
     return Router;
 };
-
-
-
-
-
