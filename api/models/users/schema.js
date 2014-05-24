@@ -3,7 +3,7 @@
  */
 var Mongoose = require('mongoose');
 
-schema = new Mongoose.Schema({
+module.exports = new Mongoose.Schema({
     username: String,
     password: String
 });

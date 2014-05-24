@@ -53,7 +53,7 @@ module.exports = {
                   username: username,
                   password: password
               });
-              console.log(newUser.username); 
+              console.log(newUser.username);
               newUser.save(function(err) {
                  if(err) res.send(500, 'ERR: ' + err);
                  else res.send(200, 'User successfully created');

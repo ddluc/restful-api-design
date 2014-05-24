@@ -28,13 +28,10 @@ module.exports = {
             requireAdmin: true,
             middleware : [Middleware.checkPrivileges],
             endpoint : function(req, res){
-              var title = req.param('title'),
-                  body  = req.param('body');
               var newPost = new Post({
-                  title  : title,
-                  body   : body
+                  title  : req.body.title,
+                  body   : req.body.body
               });
-              console.log(newPost); 
               newPost.save(function(err){
                   if(err) res.send(500, 'ERRR: ' + err);
                   else res.send(200, {status: 'OK', post: newPost});

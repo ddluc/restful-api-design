@@ -4,7 +4,7 @@
 
 var Mongoose = require('mongoose');
 
-schema = new Mongoose.Schema({
+module.exports = new Mongoose.Schema({
     title: String,
     body: String
 });
