@@ -14,7 +14,7 @@ var _ = require('underscore'),
     requireChildren = require('require-children');
 
 module.exports = function(Router) {
-    var databaseConnectionUri = 'mongodb://localhost/ddluc',
+    var databaseConnectionUri = process.env.DATABASE_CONNECTION_URI,
         Api,
         Middleware,
         Mongoose,
