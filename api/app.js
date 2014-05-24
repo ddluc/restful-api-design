@@ -1,7 +1,7 @@
 /**
  * HTTP API Design Abstract
  * @author : Daniel Lucas
- * @description : design abstract for developing simple declarative and modular Restful APIs
+ * @description : Design abstract for developing simple declarative and modular Restful APIs
  *
  * app
  * - Inialize a new express application with boot method
