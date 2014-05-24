@@ -5,8 +5,8 @@
  * Mongoose model definition for the Post document
  */
 
-var Mongoose = require('mongoose'),
-    schema = require('./schema');
+  var Mongoose = require('mongoose'),
+      schema = require('./schema');
 
-// Export model
-module.exports = Mongoose.model('Post', schema);
+  // Export model
+  module.exports = Mongoose.model('Post', schema);
