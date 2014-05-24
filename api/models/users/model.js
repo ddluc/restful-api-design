@@ -1,5 +1,8 @@
 /**
- * Created by dan on 4/9/14.
+ * HTTP API Design Abstract
+ *
+ * models/posts
+ * Mongoose model definition for the User document
  */
 
 var Mongoose = require('mongoose'),

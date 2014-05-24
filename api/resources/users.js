@@ -1,6 +1,8 @@
 /**
- * Blog Engine: resources - users
- * Create By Daniel Lucas
+ * HTTP API Design Abstract
+ *
+ * resources/users
+ * users resource definition
  */
 
 var _ = require('underscore'),

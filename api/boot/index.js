@@ -1,10 +1,11 @@
 /**
- * Blog Engine -- Boot:
- *  1. initializes database connection
- *  2. boots resources and middleware
- *  3. configures express routes
+ * HTTP API Design Abstract
  *
- * Created By Daniel Lucas
+ * boot/index
+ *   - Initializes database connection
+ *   - Loads custom middleware
+ *   - Automatically configures resources into a restful pattern
+ *
  */
 
 
@@ -46,7 +47,19 @@ module.exports = function(Router) {
     };
 
     /**
-     * Boot Resources
+     * Automatically configure rest pattern
+     *   - Iterates through each resource using requireChildren
+     *   - Constructs the resource and resource method url pattern
+     *   - Adds the custom middleware to the resource using requireChildren
+     *   - Attaches the resource endpoints
+     *
+     * Url Pattern  : api.domain.com/v1/{Resource}/{Method}
+     * HTTP Methods : POST, GET
+     *
+     * @param <String>   Route -- Url string representation of the route i.e. '/resource/method'
+     * @param <Array>    Middleware -- Array of functions to be executed before the end point
+     * @param <Function> Endpoint --  I.E. function that defines the end of the request life cycle
+     * Template: Express.httpMethod(Route, Middleware, Endpoint)
      *
      */
 
@@ -67,12 +80,12 @@ module.exports = function(Router) {
                 resourceMethodMiddleware,
                 resourceMethodEndpoint
             );
-            
+
         });
     });
 
     /**
-     * Return API Router
+     * Return Configured API Router
      */
 
     return Router;

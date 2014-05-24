@@ -1,4 +1,10 @@
-
+/**
+ * HTTP API Design Abstract
+ *
+ * middleware/checkPrivilages
+ * - Checks to see if the api consumer has a admin key in the POST body
+ * - Implemented by resource which require
+ */
 
 var Mongoose = require('mongoose'),
     User = require('../models/users/model.js');
