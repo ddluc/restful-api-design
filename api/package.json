@@ -21,6 +21,7 @@
     "underscore": "^1.6.0",
     "q": "^1.0.1",
     "express": "^4.3.1",
-    "mongoose": "^3.8.11"
+    "mongoose": "^3.8.11",
+    "logger": "0.0.1"
   }
 }
