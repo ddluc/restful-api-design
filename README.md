@@ -7,7 +7,9 @@
 
 **Clone this repository:**
 
-`$ git clone https://github.com/ddluc/restful-api-design.git`
+```
+$ git clone https://github.com/ddluc/restful-api-design.git
+```
 
 Install Dependencies: 
 
