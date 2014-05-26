@@ -9,47 +9,46 @@
  *
  */
 
-/**
- * Load Dependenies
- */
+  /**
+   * Load Dependenies
+   */
 
-var express = require('express'),
-    _ = require('underscore'),
-    boot = require('./boot');
+  var express = require('express'),
+      _ = require('underscore'),
+      bootHttp = require('./boot/http');
 
-/**
- * Set the port the app will listen on
- */
+  /**
+   * Set the ports the app will listen on
+   */
 
- var routerHttpPort = 3000;
+   var routerHttpPort = 3000;
 
-/**
- * Define Router as an Express Application
- */
 
-var Router = express();
+  /**
+   * Define Router as an Express Application
+   *
+   */
 
-/**
- * Configure connect middleware
- */
+  var Router  = express();
 
-Router.use(express.logger('dev'));
-Router.use(express.json());
-Router.use(express.urlencoded());
 
-/**
- * boot
- * Custom Express Extention Module
- *   @param <Express> Router -- Express Application
- *
- * The boot module is an express extension config tool
- *   - Configures the database connection,
- *   - Loads custom middleware,
- *   - Automatically configures resources into a restful pattern
- */
+  /**
+   * Configure connect middleware
+   */
 
-Router = boot(Router);
+  Router.use(express.logger('dev'));
+  Router.use(express.json());
+  Router.use(express.urlencoded());
 
-Router.listen(routerHttpPort, function() {
-   console.log('API is listening on port ' + routerHttpPort);
-});
+  /**
+   * Boot HTTP Router (Express)
+   * Boot Sockets  (Socket.io)
+   */
+
+  Router = bootHttp(Router);
+
+
+
+  Router.listen(routerHttpPort, function() {
+     console.log('API is listening on port ' + routerHttpPort);
+  });
