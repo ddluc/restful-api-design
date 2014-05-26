@@ -23,7 +23,7 @@ $ npm install
 **Set Environment:**
 
 ```
-$ export DATABASE_CONNECTION_URI='mongodb://localhost/{database}
+$ export DATABASE_CONNECTION_URI='mongodb://localhost/[database]
 ```
 
 **Create the database:**
