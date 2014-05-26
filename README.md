@@ -44,7 +44,7 @@ $ node app.js
 
 ##Guide
 
-**Example request: **
+**Example request:**
 
 Let's login first, as some of the other available endpoints require a user key.
 
