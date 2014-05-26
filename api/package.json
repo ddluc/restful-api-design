@@ -1,0 +1,19 @@
+{
+  "name": "restful-api-design",
+  "version": "0.0.1",
+  "description": "Design abstract for developing simple declarative and modular Restful APIs",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ddluc/blog.git"
+  },
+  "author": "Daniel Lucas",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ddluc/blog/issues"
+  },
+  "homepage": "https://github.com/ddluc/blog"
+}
