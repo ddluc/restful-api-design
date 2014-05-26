@@ -33,7 +33,7 @@ In order to create a new database with mongo, you simply `use [database]` with m
 ```
 $ mongo
 $ > use [database]
-$ > db.users.save({"username":'lucas', password:'123'}
+$ > db.users.save({"username":'lucas', password:'123'})
 ```
 
 **Run!**
