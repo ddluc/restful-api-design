@@ -15,5 +15,12 @@
   "bugs": {
     "url": "https://github.com/ddluc/blog/issues"
   },
-  "homepage": "https://github.com/ddluc/blog"
+  "homepage": "https://github.com/ddluc/blog",
+  "dependencies": {
+    "require-children": "0.0.6",
+    "underscore": "^1.6.0",
+    "q": "^1.0.1",
+    "express": "^4.3.1",
+    "mongoose": "^3.8.11"
+  }
 }
