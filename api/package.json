@@ -8,14 +8,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/ddluc/blog.git"
+    "url": "https://github.com/ddluc/restful-api-design.git"
   },
   "author": "Daniel Lucas",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/ddluc/blog/issues"
+    "url": "https://github.com/ddluc/restful-api-design/issues"
   },
-  "homepage": "https://github.com/ddluc/blog",
+  "homepage": "https://github.com/ddluc/restful-api-design",
   "dependencies": {
     "require-children": "0.0.6",
     "underscore": "^1.6.0",
