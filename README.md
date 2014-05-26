@@ -1,7 +1,7 @@
 #Restful API Design Abstract
 
 
-**Simple design patttern for developing simple, declarative, and modular Restful APIs**
+**Design patttern for developing simple, declarative, and modular Restful APIs**
 
 ###Install 
 
