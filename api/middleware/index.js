@@ -7,7 +7,7 @@
  * - All other middleware is loaded by the resource as needed
  */
 
-module.exports = {
-    _default: [require('./allowCrossDomainRequests')],
-    checkPrivileges: require('./checkPrivileges')
-};
+  module.exports = {
+      _default: [require('./allowCrossDomainRequests')],
+      checkPrivileges: require('./checkPrivileges')
+  };

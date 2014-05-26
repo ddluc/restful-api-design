@@ -1,22 +1,22 @@
-/**
- * HTTP API Design Abstract
- *
- * resources/users
- * users resource definition
- */
+  /**
+   * HTTP API Design Abstract
+   *
+   * resources/users
+   * users resource definition
+   */
 
-var _ = require('underscore'),
-    q = require('q'),
-    requireChildren = require('require-children');
+  var _ = require('underscore'),
+      q = require('q'),
+      requireChildren = require('require-children');
 
-var Middleware = requireChildren('../middleware', module),
-    User = require('../models/users/model');
+  var Middleware = requireChildren('../middleware', module),
+      User = require('../models/users/model');
 
-module.exports = {
+  module.exports = {
 
-    description : 'Manage Users',
+      description : 'Manage Users',
 
-    methods: {
+      methods: {
 
         'login' : {
             httpMethod: 'POST',
@@ -63,5 +63,6 @@ module.exports = {
             }
         }
 
-    }
-};
+
+      }
+  };

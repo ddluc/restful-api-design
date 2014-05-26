@@ -5,19 +5,19 @@
  * Posts resource definition
  */
 
-var _ = require('underscore'),
-    q = require('q'),
-    requireChildren = require('require-children');
+  var _ = require('underscore'),
+      q = require('q'),
+      requireChildren = require('require-children');
 
 
-var Middleware = requireChildren('../middleware', module);
-    Post = require('../models/posts/model');
+  var Middleware = requireChildren('../middleware', module);
+      Post = require('../models/posts/model');
 
-module.exports = {
+  module.exports = {
 
-    description : 'Manage Posts',
+      description : 'Manage Posts',
 
-    methods: {
+      methods: {
 
         'create': {
             httpMethod: 'POST',
@@ -35,9 +35,10 @@ module.exports = {
                   body   : req.body.body
               });
               newPost.save(function(err){
-                  if(err) res.send(500, 'ERRR: ' + err);
-                  else res.send(200, {status: 'OK', post: newPost});
+                if(err) res.send(500, 'ERRR: ' + err);
+                else res.send(200, {status: 'OK', post: newPost});
               });
+
             }
         },
 
@@ -54,5 +55,6 @@ module.exports = {
               });
             }
         }
-    }
-};
+        
+      }
+  };
