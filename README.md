@@ -3,7 +3,7 @@
 
 **Design patttern for developing simple, declarative, and modular Restful APIs**
 
-###Install
+##Install
 
 **Clone this repository:**
 
@@ -41,3 +41,15 @@ $ > db.users.save({"username":'lucas', password:'123'})
 ```
 $ node app.js
 ```
+
+##Guide
+
+**Example request: **
+
+Let's login first, as some of the other available endpoints require a user key.
+
+```
+$ curl -H "Content-Type: application/json" -d '{"username":"lucas","password":"123"}' http://localhost:3000/users/login
+```
+
+This should respond with a JSON object containing the key, which you can then use to create new users
