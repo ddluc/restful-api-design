@@ -16,6 +16,7 @@ $ git clone https://github.com/ddluc/restful-api-design.git
 cd into the api directory and then use npm to install the dependencies
 
 ```
+$ cd restful-api-design
 $ cd api
 $ npm install
 ```
